@@ -1,18 +1,21 @@
 #include <stdio.h>
-#include <stdlib.h>
- 
-#define SWAP(t,x,y)\
-    ({t temp = x;\
-    x = y;\
-    y = temp;})
- 
-int main()
-{
-    int a = 17,b = 71;
-    SWAP(int,a,b);
-    printf("a = %d , b = %d\n", a, b);
-    float a1 = 1.2345,b1 = 5.4321;
-    SWAP(float,a1,b1);
-    printf("a1 = %g , b1 = %g\n", a1, b1);
+
+#define SWAP(type, a, b) do { \
+    type temp = a; \
+    a = b; \
+    b = temp; \
+} while (0)
+
+int main() {
+    int num1, num2;
+    printf("Enter 2 elements: ");
+    scanf("%d %d", &num1, &num2);
+
+    printf("Before: num1 = %d, num2 = %d\n", num1, num2);
+
+    SWAP(typeof(num1), num1, num2);
+
+    printf("After: num1 = %d, num2 = %d\n", num1, num2);
+
     return 0;
 }
